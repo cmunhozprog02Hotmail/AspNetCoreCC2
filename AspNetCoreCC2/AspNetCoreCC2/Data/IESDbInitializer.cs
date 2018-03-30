@@ -27,6 +27,23 @@ namespace AspNetCoreCC2.Data
                 context.Departamentos.Add(d);
             }
             context.SaveChanges();
+
+            if (context.Instituicoes.Any())
+            {
+                return;
+            }
+
+            var instituicoes = new Instituicao[]
+            {
+                new Instituicao {Nome="UniRio"},
+                new Instituicao {Nome="UniCampinas"}
+            };
+
+            foreach (Instituicao i in instituicoes)
+            {
+                context.Instituicoes.Add(i);
+            }
+            context.SaveChanges();
         }
     }
 }
